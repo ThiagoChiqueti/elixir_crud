@@ -44,6 +44,14 @@ get "/products/id" find one product by id
 post "/products" creates and saves a product in the database
 
 
+Post data structure:
+
+{"product":{
+	"name": "ProductName",
+	"price": ProductPrice
+}}
+
+
 
 
 Use Insomnia or Postman to Test
