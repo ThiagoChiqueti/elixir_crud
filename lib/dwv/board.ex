@@ -35,7 +35,7 @@ defmodule Dwv.Board do
       ** (Ecto.NoResultsError)
 
   """
-  def get_product!(id), do: Repo.get!(Product, id)
+  def get_product(id), do: Repo.get(Product, id)
 
   @doc """
   Creates a product.
@@ -55,50 +55,4 @@ defmodule Dwv.Board do
     |> Repo.insert()
   end
 
-  @doc """
-  Updates a product.
-
-  ## Examples
-
-      iex> update_product(product, %{field: new_value})
-      {:ok, %Product{}}
-
-      iex> update_product(product, %{field: bad_value})
-      {:error, %Ecto.Changeset{}}
-
-  """
-  def update_product(%Product{} = product, attrs) do
-    product
-    |> Product.changeset(attrs)
-    |> Repo.update()
-  end
-
-  @doc """
-  Deletes a product.
-
-  ## Examples
-
-      iex> delete_product(product)
-      {:ok, %Product{}}
-
-      iex> delete_product(product)
-      {:error, %Ecto.Changeset{}}
-
-  """
-  def delete_product(%Product{} = product) do
-    Repo.delete(product)
-  end
-
-  @doc """
-  Returns an `%Ecto.Changeset{}` for tracking product changes.
-
-  ## Examples
-
-      iex> change_product(product)
-      %Ecto.Changeset{data: %Product{}}
-
-  """
-  def change_product(%Product{} = product, attrs \\ %{}) do
-    Product.changeset(product, attrs)
-  end
 end

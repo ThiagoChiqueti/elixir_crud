@@ -1,4 +1,8 @@
-# Dwv
+#DWV TESTE
+
+first [install erlang](https://www.erlang.org/downloads.html) and [Elixir](https://elixir-lang.org/install.html) 
+
+PostgreSql is required
 
 To start your Phoenix server:
 
@@ -7,14 +11,39 @@ To start your Phoenix server:
   * Install Node.js dependencies with `npm install` inside the `assets` directory
   * Start Phoenix endpoint with `mix phx.server`
 
-Now you can visit [`localhost:4000`](http://localhost:4000) from your browser.
 
-Ready to run in production? Please [check our deployment guides](https://hexdocs.pm/phoenix/deployment.html).
 
-## Learn more
 
-  * Official website: https://www.phoenixframework.org/
-  * Guides: https://hexdocs.pm/phoenix/overview.html
-  * Docs: https://hexdocs.pm/phoenix
-  * Forum: https://elixirforum.com/c/phoenix-forum
-  * Source: https://github.com/phoenixframework/phoenix
+
+## Stack utilizada
+
+Elixir
+
+Phoenix
+
+Ecto
+
+PostgreSQL
+
+
+
+
+## Features
+
+- Create
+- Read all products
+- Read one product by id
+
+
+## Endpoits
+
+get "/products" return all products in database
+
+get "/products/id" find one product by id
+
+post "/products" creates and saves a product in the database
+
+
+
+
+Use Insomnia or Postman to Test

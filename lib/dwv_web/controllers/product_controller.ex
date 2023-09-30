@@ -40,10 +40,18 @@ defmodule DwvWeb.ProductController do
 
   #Função que renderiza os dados de um produto específico
   #Os dados são encontrados no banco de dados através do id passado através da requisição
+  #Caso o dado não seja encontrato ele retorna um erro
 
   def show(conn, %{"id" => id}) do
-    product = Board.get_product!(id)
-    render(conn, "show.json", product: product)
+    with {:ok, product} <- Board.get_product(id) do
+      render(conn, "show.json", product: product)
+    else
+      nil ->
+        conn
+        |> put_status(:not_found)
+        |> render("not_found.json")
+    end
   end
+
 
 end

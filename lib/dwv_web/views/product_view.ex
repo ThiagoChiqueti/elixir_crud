@@ -7,7 +7,7 @@ defmodule DwvWeb.ProductView do
   end
 
   def render("show.json", %{product: product}) do
-    %{data: render_one(product, ProductView, "product.json")}
+    %{dados: render_one(product, ProductView, "product.json")}
   end
 
   def render("product.json", %{product: product}) do
@@ -15,4 +15,9 @@ defmodule DwvWeb.ProductView do
       name: product.name,
       price: product.price}
   end
+
+  def render("not_found.json", _assings) do
+    %{error: "Nenhum produto foi encontrado"}
+  end
+
 end
