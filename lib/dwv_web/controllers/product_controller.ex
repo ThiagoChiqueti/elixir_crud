@@ -15,12 +15,7 @@ defmodule DwvWeb.ProductController do
   #Cria e salva um produto no banco de dados
   def create(conn, %{"product" => product_params}) do
 
-    #Captura o valor do produto
-    price = product_params["price"]
-    #Valida se o preço é positivo antes de criar o produto
-    if price > 0 do
-
-      #Os dados do produto são passados para a função 'Board.create_product' que cria e salva no banco de dados 
+      #Os dados do produto são passados para a função 'Board.create_product' que valida e salva no banco de dados
 
       with {:ok, %Product{} = product} <- Board.create_product(product_params) do
         #Retorna uma resposta com sucesso
@@ -30,12 +25,7 @@ defmodule DwvWeb.ProductController do
         |> render("show.json", product: product)
       end
 
-    else
-      #Caso não seja possível validar o preço retornará erro
-      conn
-      |> put_status(422)
-      |> json(%{message: "The price must be greater than zero, try again!"})
-    end
+
   end
 
   #Função que renderiza os dados de um produto específico
@@ -43,14 +33,18 @@ defmodule DwvWeb.ProductController do
   #Caso o dado não seja encontrato ele retorna um erro
 
   def show(conn, %{"id" => id}) do
-    with {:ok, product} <- Board.get_product(id) do
-      render(conn, "show.json", product: product)
-    else
+    product = Board.get_product(id)
+
+    case product do
       nil ->
         conn
         |> put_status(:not_found)
         |> render("not_found.json")
+      _ ->
+        conn
+        |> render("show.json", product: product)
     end
+
   end
 
 

@@ -1,54 +1,19 @@
 defmodule Dwv.Board do
-  @moduledoc """
-  The Board context.
-  """
 
   import Ecto.Query, warn: false
   alias Dwv.Repo
 
   alias Dwv.Board.Product
 
-  @doc """
-  Returns the list of products.
-
-  ## Examples
-
-      iex> list_products()
-      [%Product{}, ...]
-
-  """
+  #lista os produtos
   def list_products do
     Repo.all(Product)
   end
 
-  @doc """
-  Gets a single product.
-
-  Raises `Ecto.NoResultsError` if the Product does not exist.
-
-  ## Examples
-
-      iex> get_product!(123)
-      %Product{}
-
-      iex> get_product!(456)
-      ** (Ecto.NoResultsError)
-
-  """
+  #Encontra um produto específico
   def get_product(id), do: Repo.get(Product, id)
 
-  @doc """
-  Creates a product.
-
-  ## Examples
-
-      iex> create_product(%{field: value})
-      {:ok, %Product{}}
-
-      iex> create_product(%{field: bad_value})
-      {:error, %Ecto.Changeset{}}
-
-  """
+  #Validação e inserção no Banco de dados
   def create_product(attrs \\ %{}) do
     %Product{}
     |> Product.changeset(attrs)
