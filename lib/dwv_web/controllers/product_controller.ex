@@ -21,7 +21,6 @@ defmodule DwvWeb.ProductController do
         #Retorna uma resposta com sucesso
         conn
         |> put_status(:created)
-        |> put_resp_header("location", Routes.product_path(conn, :show, product))
         |> render("show.json", product: product)
       end
 
